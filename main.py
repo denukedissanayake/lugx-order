@@ -6,7 +6,11 @@ from pydantic import BaseModel
 
 app = FastAPI(root_path="/order")
 
-Base.metadata.create_all(bind=engine)
+def init_db():
+    Base.metadata.create_all(bind=engine)
+
+if __name__ == "__main__":
+    init_db()
 
 def get_db():
     db = SessionLocal()
